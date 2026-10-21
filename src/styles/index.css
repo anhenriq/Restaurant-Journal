@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: theme('colors.surface');
+    color: theme('colors.ink');
+    font-family: theme('fontFamily.sans');
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: theme('fontFamily.serif');
+    font-weight: 600;
+  }
+
+  /* One clear, consistent keyboard focus indicator for every control */
+  :focus-visible {
+    outline: 3px solid theme('colors.focus');
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /*
+   * Custom checkbox/radio/switch pattern: a visually hidden <input class="peer"> followed by
+   * a styled sibling marked "focus-target". This shows the keyboard focus ring on that sibling.
+   */
+  .peer:focus-visible ~ .focus-target {
+    outline: 3px solid theme('colors.focus');
+    outline-offset: 2px;
+  }
+}
